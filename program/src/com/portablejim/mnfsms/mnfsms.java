@@ -264,7 +264,7 @@ public class mnfsms extends Activity{
     	@Override
     	protected Integer doInBackground(Void... v) {
     		try {
-				SMS_url = new URL("https://www.mynetfone.com.au/portal/sms/Authenticate.action?username=" + URL_username + "&password=" + URL_password + "&to=" + URL_numbers + "&subscriptionId=" + URL_subscription + "&text=" + URL_message);
+				SMS_url = new URL("https://www.pennytel.com.au/sms?user=" + URL_username + "&password=" + URL_password + "&sender=" + URL_subscription + "&destination=" + URL_numbers + "&text=" + URL_message);
 			} catch (MalformedURLException e1) {
 				e1.printStackTrace();
 			}
@@ -300,7 +300,7 @@ public class mnfsms extends Activity{
 				sms_result = "SMS failed to send. Ensure there is a message to send.";
 					break;
 					
-			case 400:
+			case 407:
 			default:
 				sms_result = "SMS failed to send because of an unknown error. Please check you have internet access, and all details (including MENU => Settings) are correct.";
 				break;
