@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -290,6 +291,13 @@ public class mnfsms extends Activity{
 			switch (req) {
 			case 200:
 				sms_result = "SMS sent successfully";
+				
+				ContentValues values = new ContentValues(); 
+	            
+				values.put("address", ((EditText) findViewById(id.to_textbox)).getText().toString()); 
+			    values.put("body", ((EditText) findViewById(id.message_textbox)).getText().toString()); 
+			    getContentResolver().insert(Uri.parse("content://sms/sent"), values);
+				
 				break;
 				
 			case 401:
@@ -345,6 +353,12 @@ public class mnfsms extends Activity{
     	
     	// Remove "null" from start of string when not international number
     	new_phone = new_phone.replaceAll("^null", "");
+    	
+    	// Remove the + from the start of the sender's number.
+		if (new_phone.charAt(0) == '+') {
+			new_phone = new_phone.substring(1);
+		}
+
     	
     	return new_phone;
     }
