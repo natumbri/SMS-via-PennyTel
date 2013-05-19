@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">SMS via PennyTel</string>
     <string name="decription">Send SMS via the PennyTel SMS API v2</string>
-    <string name="version">0.0.2</string>
+    <string name="version">0.0.3</string>
     <string name="main_window_name">SMS via PennyTel</string>
     <string name="main_heading">Send SMS via PennyTel</string>
 	<string name="settings_name">SMS via PennyTel - Settings</string>
@@ -31,12 +31,12 @@
 <string name="help_intro">Here is more info about each field</string>
 <string name="help_intro_main">On the main form:</string>
 <string name="help_intro_settings">On the settings form:</string>
-<string name="help_main_to"><b><u>To</u></b> - the destination number, or multiple numbers separated by a comma, i.e. 614xxxxxx, 614xxxxxx. For all numbers, please use E.164 format. i.e. [country code][number]</string>
+<string name="help_main_to"><b><u>To</u></b> - the destination number.  One destination only.  For all numbers, please use E.164 format. i.e. [country code][number] (614xxxxxxxx)</string>
 <string name="help_main_message"><b><u>Message</u></b> - the text message to send. Only the first 160 characters will be sent.</string>
 <string name="help_settings_username"><b><u>PennyTel VoIP Username</u></b> - your PennyTel VoIP username, as displayed in the PennyTel Portal, e.g. 888xxxxxxx</string>
 <string name="help_settings_password"><b><u>PennyTel VoIP Password</u></b> - your PennyTel VoIP password, as displayed in the PennyTel Portal</string>
 <string name="help_settings_subid"><b><u>Registered Caller ID for the SMS</u></b> - Caller ID for the SMS. Must be one of the registered and verified mobile number of the PennyTel Account in International Format (E.164).</string>
-<string name="help_settings_fixphone_checkbox_text"><b><u>Format phone numbers correctly</u></b> - Formats the phone numbers to an acceptable form (i.e. turning "9999-9999" into "99999999"). This works for some formats of phone numbers. You can always edit the number if it is wrong.</string>
+<string name="help_settings_fixphone_checkbox_text"><b><u>Format phone numbers correctly</u></b> - Formats the phone numbers to an acceptable form (i.e. turning &quot;9999-9999&quot; into &quot;99999999&quot;, &quot;04xxxxxxxx&quot; into &quot;614xxxxxxxx&quot;). This works for some formats of phone numbers. You can always edit the number if it is wrong.  A &quot;0&quot; at the start of a number will be replaced with &quot;61&quot; - this will cause you problems if you are not in Australia, sending to an Australian number.  You can avoid this altogether by using the correct E.164 format</string>
 <string name="help_main_button_exit"><b><u>"Exit" button</u></b> - Exit the application</string>
 <string name="help_main_button_clear"><b><u>"Clear" button</u></b> - Clear the \"To\" and \"Message\" Fields</string>
 <string name="help_main_button_send"><b><u>"Exit" button</u></b> - Exit the application</string>
