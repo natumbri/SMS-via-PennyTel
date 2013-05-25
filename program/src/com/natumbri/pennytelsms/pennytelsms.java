@@ -350,20 +350,14 @@ public class pennytelsms extends Activity{
     
     public String fix_phone(String old_phone)
     {
-    	String new_phone = old_phone.replaceAll("^(?:\\d*(\\u002B))?\\u0028?(\\d*)\\u0029?\\s?(\\d*)\\s?\\u002D?\\s?(\\d+)$", "$1$2$3$4");
     	
-    	// Remove "null" from start of string when not international number
-    	new_phone = new_phone.replaceAll("^null", "");
+    	String new_phone = old_phone.replaceAll("\\D","");
     	
-    	// Remove the + from the start of the recipient's number.
-		if (new_phone.charAt(0) == '+') {
-			new_phone = new_phone.substring(1);
+		// Remove the 0 from the start of a recipient's number and replace with country code (61 for Australia).
+			
+    	if (new_phone.charAt(0) == '0') {
+			new_phone = "61" + new_phone.substring(1);
 		}
-
-		// Remove the + from the start of the recipient's number.
-			if (new_phone.charAt(0) == '0') {
-				new_phone = "61" + new_phone.substring(1);
-			}
 
     	return new_phone;
     }
