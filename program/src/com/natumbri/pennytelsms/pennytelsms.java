@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -37,7 +38,7 @@ import com.natumbri.pennytelsms.pennytelsms_settings;
 import com.natumbri.pennytelsms.R.id;
 
 public class pennytelsms extends Activity{
-	public static final String SETTINGS_NAME = "MNFSMS-settings";
+	public static final String SETTINGS_NAME = "PennyTelSMS-settings";
 	private static final int CONTACT_PICKER_RESULT = 1001;
 
 	/** Called when the activity is first created. */
@@ -45,7 +46,7 @@ public class pennytelsms extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+                     
         // "Send" Button
         Button send_button = (Button)findViewById(id.send_button);
         send_button.setOnClickListener(new OnClickListener() {
@@ -67,7 +68,7 @@ public class pennytelsms extends Activity{
     		}
     		});
         
-     // "Exit" Button 
+        // "Exit" Button 
         ((Button)findViewById(id.exit_button)).setOnClickListener(new OnClickListener() {
     		public void onClick(View arg0) {
     			// Exit the app
@@ -125,6 +126,10 @@ public class pennytelsms extends Activity{
         	new AlertDialog.Builder(pennytelsms.this).setTitle(R.string.firstrun_title).setMessage(R.string.firstrun).setPositiveButton("OK", null).show();
         	settings_editor.putBoolean("firstrun", false);
         	settings_editor.commit();
+        }
+        
+        if (null == savedInstanceState) {
+            processIntentData(getIntent());
         }
     }
     
@@ -211,7 +216,7 @@ public class pennytelsms extends Activity{
                     //else
                     //{
                     //	phonenumEntry.append(phone_num);
-                    //}
+                    	phonenumEntry = (EditText) findViewById(R.id.to_textbox);     //}
                     
                     if (phone_num.length() == 0) {
                         Toast.makeText(this, "Error getting phone number for contact.",
@@ -360,5 +365,29 @@ public class pennytelsms extends Activity{
 		}
 
     	return new_phone;
+    }
+   
+    private void processIntentData(Intent intent)
+    {
+    	    	
+    	if (null == intent) return;
+
+        if (Intent.ACTION_SENDTO.equals(intent.getAction())) {
+            //in the data i'll find the number of the destination
+            String destionationNumber = intent.getDataString();
+            try {
+				destionationNumber = URLDecoder.decode(destionationNumber, "US-ASCII");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}            
+            
+            //clear the string
+            destionationNumber = fix_phone(destionationNumber);
+            
+            //and set fields
+            ((EditText) findViewById(R.id.to_textbox)).setText(destionationNumber);
+
+        } 
     }
 }

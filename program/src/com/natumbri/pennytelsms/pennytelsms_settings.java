@@ -13,7 +13,7 @@ import com.natumbri.pennytelsms.R;
 import com.natumbri.pennytelsms.R.id;
 
 public class pennytelsms_settings extends Activity {
-	public static final String SETTINGS_NAME = "MNFSMS-settings";
+	public static final String SETTINGS_NAME = "PennyTelSMS-settings";
 
     private OnClickListener save_button_listener = new OnClickListener() {
 		public void onClick(View arg0) {

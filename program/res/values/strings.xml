@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">SMS via PennyTel</string>
     <string name="decription">Send SMS via the PennyTel SMS API v2</string>
-    <string name="version">0.0.4</string>
+    <string name="version">0.0.5</string>
     <string name="main_window_name">SMS via PennyTel</string>
     <string name="main_heading">Send SMS via PennyTel</string>
 	<string name="settings_name">SMS via PennyTel - Settings</string>
